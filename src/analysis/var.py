@@ -30,3 +30,15 @@ def calculate_var(daily_returns, confidence_level=0.95):
     index = int((1 - confidence_level) * len(sorted_returns))
     var = sorted_returns[index]
     return var
+
+
+"""
+CALCULATIONG CONDITIONAL VaR
+"""
+
+
+def calculate_cvar(daily_returns, var, confidence_level=0.95):
+    worse_than_var = daily_returns[daily_returns <= var]
+
+    cvar = worse_than_var.mean()
+    return cvar
