@@ -33,6 +33,27 @@ def calculate_var(daily_returns, confidence_level=0.95):
 
 
 """
+    Backtest the VaR model.
+    
+    :param historical_returns: A series of historical returns.
+    :param var: The calculated VaR for the same period.
+    :return: The percentage of days when the actual loss exceeded the VaR.
+    """
+
+
+def backtest_var(historical_returns, var):
+    excedances = 0
+    for return_value in historical_returns:
+        if return_value < var:
+            excedances += 1
+
+    total_days = len(historical_returns)
+    excendance_rate = excedances / total_days
+
+    return excendance_rate
+
+
+"""
 CALCULATIONG CONDITIONAL VaR
 """
 

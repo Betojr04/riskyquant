@@ -21,24 +21,20 @@ def fetch_hist_stock_data(ticker, period, selected_columns=None):
 # FETCHING CURRENT STOCK DATA
 
 
-def fetch_curr_stock_data(ticker, selected_columns=None):
+def fetch_curr_stock_data(ticker):
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
-
-        if selected_columns is not None:
-            selected_columns = ["Ticker", "Market Cap",
-                                "Latest Close", "52-Week High"]
+        print(info)
 
         data = {
             "Ticker": ticker,
             "Market Cap": info.get('marketCap'),
-            "Latest Close": info.get('previousClose'),
-            "52-Week High": info.get('fiftyTwoWeekHigh')
+            "Previous Close": info.get('previousClose'),
+            "52-Week High": info.get('fiftyTwoWeekHigh'),
+            "Open": info.get('open'),
+            "Dividend Yiels": info.get('dividendYield')
         }
-
-        if selected_columns is not None:
-            data = {key: data[key] for key in selected_columns}
 
         return data
 
