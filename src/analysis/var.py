@@ -53,6 +53,25 @@ def backtest_var(historical_returns, var):
     return excendance_rate
 
 
+# ENHANCED BACKTESTING VAR
+def enhanced_backtest_var(historical_data, confidence_level=0.95, rolling_window=252):
+    excedances = 0
+    var_values = []
+
+    for i in range(rolling_window, len(historical_data)):
+        window_data = historical_data.iloc[i-rolling_window:i]
+        daily_returns = calculate_daily_returns(window_data)
+        var = calculate_var(daily_returns, confidence_level)
+        var_values.append(var)
+
+        next_day_return = historical_data['Close'].pct_change().iloc[i]
+        if next_day_return < var:
+            excedances += 1
+
+    excedances_rate = excedances / (len(historical_data) - rolling_window)
+    return excedances_rate, var_values
+
+
 """
 CALCULATIONG CONDITIONAL VaR
 """
