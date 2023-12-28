@@ -2,16 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import reportWebVitals from "./reportWebVitals";
-
-import { Layout } from "./views/Layout.js";
-import { injectContext } from "./store/appContext";
+// store imports
+import Layout from "./views/Layout.js";
+import InjectContext from "./store/appContext.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <injectContext>
+    <InjectContext>
       <Layout />
-    </injectContext>
+    </InjectContext>
   </React.StrictMode>
 );
 

@@ -8,6 +8,7 @@ def main():
     # asking for the data user wants retrieved
     data_type = input(
         "Enter the type of data you want (e.g., historical, current):")
+        
 
     # for historical data selection
     if data_type.lower() == 'historical':
