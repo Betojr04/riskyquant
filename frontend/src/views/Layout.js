@@ -7,6 +7,7 @@ import ScrollToTop from "../components/scrollToTop";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Home } from "./Home";
+import { Random } from "../components/Random";
 
 const Layout = () => {
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<Random />} path="/random" />
           </Routes>
           <Footer />
         </ScrollToTop>

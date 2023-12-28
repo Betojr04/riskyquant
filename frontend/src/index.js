@@ -9,9 +9,9 @@ import InjectContext from "./store/appContext.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <InjectContext>
-      <Layout />
-    </InjectContext>
+    <InjectContext />
+    <Layout />
+    <InjectContext />
   </React.StrictMode>
 );
 
